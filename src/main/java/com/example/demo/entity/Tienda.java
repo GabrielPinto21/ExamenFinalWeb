@@ -6,6 +6,8 @@ import lombok.Data;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Data
 @Entity
 @NamedQuery(name="Tienda.findAll", query="SELECT t FROM Tienda t")
@@ -23,9 +25,11 @@ public class Tienda implements Serializable {
 
 	private String uuid;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="tienda")
 	private List<Cajero> cajeros;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="tienda")
 	private List<Compra> compras;
 

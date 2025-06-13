@@ -7,6 +7,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Data
 @Entity
 @NamedQuery(name="Producto.findAll", query="SELECT p FROM Producto p")
@@ -28,6 +30,7 @@ public class Producto implements Serializable {
 
 	private String referencia;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="producto")
 	private List<DetallesCompra> detallesCompras;
 

@@ -6,6 +6,8 @@ import lombok.Data;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Data
 @Entity
@@ -27,7 +29,7 @@ public class Cliente implements Serializable {
 	@JoinColumn(name="tipo_documento_id")
 	private TipoDocumento tipoDocumento;
 
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="cliente")
 	private List<Compra> compras;
 

@@ -8,6 +8,8 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Data
 @Entity
 @NamedQuery(name="Compra.findAll", query="SELECT c FROM Compra c")
@@ -39,9 +41,11 @@ public class Compra implements Serializable {
 	@ManyToOne
 	private Vendedor vendedor;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="compra")
 	private List<DetallesCompra> detallesCompras;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="compra")
 	private List<Pago> pagos;
 
